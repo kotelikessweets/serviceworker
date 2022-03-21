@@ -104,7 +104,7 @@ if (
                   // Copy data object to get parameters in the click handler
                   payload.data.data = JSON.parse(JSON.stringify(payload.data));
 
-                  registration.showNotification(payload.data.title, payload.data);
+                  registration.showNotification(payload.data.alert, payload.data);
                 }).catch(function(error) {
                     // registration failed :(
                     showError('ServiceWorker registration failed', error);
