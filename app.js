@@ -235,11 +235,11 @@ function sendNotification(notification) {
             }).then(function(json) {
                 console.log('Response', json);
 
-                if (json.success === 1) {
+                if (json.deviceAddress != null) {
                     massage_row.show();
                     massage_id.text(json.deviceAddress.deviceAddress);
                 } else {
-                    massage_row.hide();
+                    massage_row.show();
                     massage_id.text('Wrong went something');
                 }
             }).catch(function(error) {
