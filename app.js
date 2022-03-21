@@ -1,5 +1,5 @@
 firebase.initializeApp({
-    messagingSenderId: '448358493027'
+    messagingSenderId: '39749517184'
 });
 
 
@@ -182,28 +182,54 @@ function getToken() {
 
 
 function sendNotification(notification) {
-    var key = 'AAAAaGQ_q2M:APA91bGCEOduj8HM6gP24w2LEnesqM2zkL_qx2PJUSBjjeGSdJhCrDoJf_WbT7wpQZrynHlESAoZ1VHX9Nro6W_tqpJ3Aw-A292SVe_4Ho7tJQCQxSezDCoJsnqXjoaouMYIwr34vZTs';
+  //  var key = 'AAAAaGQ_q2M:APA91bGCEOduj8HM6gP24w2LEnesqM2zkL_qx2PJUSBjjeGSdJhCrDoJf_WbT7wpQZrynHlESAoZ1VHX9Nro6W_tqpJ3Aw-A292SVe_4Ho7tJQCQxSezDCoJsnqXjoaouMYIwr34vZTs';
 
     console.log('Send notification', notification);
 
     // hide last notification data
-    info.hide();
+   // info.hide();
     massage_row.hide();
 
     messaging.getToken()
         .then(function(currentToken) {
-            fetch('https://fcm.googleapis.com/fcm/send', {
+            fetch('https://pushservertest.edna.ru/push-test/service/device/registerPushDevice', {
                 method: 'POST',
                 headers: {
-                    'Authorization': 'key=' + key,
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
                 },
-                body: JSON.stringify({
-                    // Firebase loses 'image' from the notification.
-                    // And you must see this: https://github.com/firebase/quickstart-js/issues/71
-                    data: notification,
-                    to: currentToken
-                })
+                body: '{' +
+'	"pushDeviceInfo": {' +
+'		"appPackage": "com.webpush.testapp",' +
+'		"appVersion": "1.1.0 (1)",' +
+'		"providerUid": "PH5AckgzOkdAYjYmRmBWNEtGQ2ZOOEA7cC9+Pg==",' +
+'		"pnsPushAddresses": [{' +
+'			"pns": "gcm",' +
+'			"pnsPushAddress": "' + currentToken + '"' +
+'		}],' +
+'		"deviceUid": "'+ Math.floor(Math.random() * 100000) +'028cdbf63c0d55e83a19ac58ebf5c0c3f04",' +
+'		"installationUid": "dMRawr3ZSXWjwyAo'+Math.floor(Math.random() * 100)+'o3Am",' +
+'		"platform": 1,' +
+'		"osName": "ANDROID",' +
+'		"osVersionMajor": 13,' +
+'		"osVersionMinor": -1,' +
+'		"osVersionPatch": -1,' +
+'		"locale": "ru_RU",' +
+'		"timeZoneUTCOffsetSecond": 10800,' +
+'		"deviceSerialNumber": "unknown",' +
+'		"deviceModel": "site",' +
+'		"deviceName": "test",' +
+'		"version": "0.0.1",' +
+'		"ipAddress": "fe80::30df:79ff:fe03:d11d%dummy0",' +
+'		"macAddress": "32:DF:79:03:D1:1D",' +
+'		"routerIpAddress": "192.168.1.56",' +
+'		"routerMacAddress": "02:00:00:00:00:00",' +
+'		"memorySize": "32656",' +
+'		"apiLevel": 28,' +
+'		"canShowPushNotification": true,' +
+'		"notificationAlertAllowed": true' +
+'	}' +
+'              }'
             }).then(function(response) {
                 return response.json();
             }).then(function(json) {
@@ -211,10 +237,10 @@ function sendNotification(notification) {
 
                 if (json.success === 1) {
                     massage_row.show();
-                    massage_id.text(json.results[0].message_id);
+                    massage_id.text(json.deviceAddress.deviceAddress);
                 } else {
                     massage_row.hide();
-                    massage_id.text(json.results[0].error);
+                    massage_id.text('Wrong went something');
                 }
             }).catch(function(error) {
                 showError(error);
