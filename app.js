@@ -1,6 +1,3 @@
-importScripts('https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js');
-importScripts('https://www.gstatic.com/firebasejs/9.23.0/firebase-messaging-compat.js');
-
 // Firebase init v9
 const firebaseConfig = {
   apiKey: "YOUR_API_KEY",
