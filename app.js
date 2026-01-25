@@ -1,3 +1,14 @@
+// Firebase init v9
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "your-project.firebaseapp.com",
+  projectId: "your-project-id",
+  messagingSenderId: "39749517184",
+  appId: "1:39749517184:web:XXXXXXXX"
+};
+
+firebase.initializeApp(firebaseConfig);
+
 importScripts('https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js');
 importScripts('https://www.gstatic.com/firebasejs/9.23.0/firebase-messaging-compat.js');
 
