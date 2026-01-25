@@ -1,27 +1,6 @@
 importScripts('https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js');
 importScripts('https://www.gstatic.com/firebasejs/9.23.0/firebase-messaging-compat.js');
 
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "your-project.firebaseapp.com",
-  projectId: "your-project-id",
-  messagingSenderId: "39749517184",
-  appId: "1:39749517184:web:XXXXXXXX"
-};
-
-firebase.initializeApp(firebaseConfig);
-
-const messaging = firebase.messaging();
-
-messaging.getToken({
-  vapidKey: 'YOUR_PUBLIC_VAPID_KEY'
-}).then((token) => {
-  console.log('FCM token:', token);
-});
-
-importScripts('https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js');
-importScripts('https://www.gstatic.com/firebasejs/9.23.0/firebase-messaging-compat.js');
-
 firebase.initializeApp({
   apiKey: "YOUR_API_KEY",
   projectId: "your-project-id",
