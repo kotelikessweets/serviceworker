@@ -10,7 +10,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-const registration = await navigator.serviceWorker.register('/serviceworker/firebase-messaging-sw.js');
+const registration = navigator.serviceWorker.register('/serviceworker/firebase-messaging-sw.js');
 
 
 const messaging = firebase.messaging();
@@ -106,6 +106,7 @@ if (
       .append('<em>' + payload.data.body + '</em>');
 
     // Optional: show notification while page is open
+    navigator.serviceWorker.register('/serviceworker/firebase-messaging-sw.js');
     if (Notification.permission === 'granted') {
       navigator.serviceWorker.ready.then(function (registration) {
         registration.showNotification(payload.data.alert, {
