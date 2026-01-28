@@ -10,6 +10,9 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+const registration = await navigator.serviceWorker.register('/serviceworker/firebase-messaging-sw.js');
+
+
 const messaging = firebase.messaging();
 const VAPID_KEY = 'BCII_elwFU-0lcIIHbub_13Teuju9z4ZKCbPujJjyqSSP-Iqpjbul1XCo-V59e9YI_k-VXnp0bZe5-a21wevUtk';
 
