@@ -1,16 +1,17 @@
 // Firebase init v9
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "your-project.firebaseapp.com",
-  projectId: "your-project-id",
-  messagingSenderId: "39749517184",
-  appId: "1:39749517184:web:XXXXXXXX"
+  apiKey: "AIzaSyAyteudQPWB_RL-fwGY917Gi3SXIjWchNg",
+  authDomain: "svitlo-availability-app.firebaseapp.com",
+  projectId: "svitlo-availability-app",
+  storageBucket: "svitlo-availability-app.firebasestorage.app",
+  messagingSenderId: "993204375961",
+  appId: "1:993204375961:web:9ede561341138799a40308",
 };
 
 firebase.initializeApp(firebaseConfig);
 
 const messaging = firebase.messaging();
-const VAPID_KEY = 'YOUR_PUBLIC_VAPID_KEY';
+const VAPID_KEY = 'BCII_elwFU-0lcIIHbub_13Teuju9z4ZKCbPujJjyqSSP-Iqpjbul1XCo-V59e9YI_k-VXnp0bZe5-a21wevUtk';
 
 // UI bindings 
 var bt_register = $('#register');
