@@ -10,7 +10,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-const registration = navigator.serviceWorker.register('/serviceworker/firebase-messaging-sw.js');
+const registration = await navigator.serviceWorker.register('/serviceworker/firebase-messaging-sw.js');
 
 
 const messaging = firebase.messaging();
