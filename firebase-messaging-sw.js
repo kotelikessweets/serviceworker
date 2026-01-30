@@ -14,12 +14,12 @@ const messaging = firebase.messaging();
 messaging.onBackgroundMessage(function(payload) {
   console.log('[SW] Background message', payload);
 
-  const notificationTitle = payload.data?.alert || 'Notification';
+  const notificationTitle = payload.notification?.title || 'Notification';
   const notificationOptions = {
-    body: payload.data?.body,
-    icon: payload.data?.icon,
+    body: payload.notification?.body,
+    icon: payload.notification?.icon,
     data: {
-      click_action: payload.data?.click_action || '/'
+      click_action: payload.notification?.click_action || '/'
     }
   };
 
